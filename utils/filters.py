@@ -36,5 +36,6 @@ def lowpass_mean_filter(sig, winsize):
 
     return sig
 
+
 def lowpass_median_filter(sig, winsize):
     return smooth(sig, winsize)
