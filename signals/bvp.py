@@ -48,7 +48,10 @@ def correct_peaks(peaks, sr, threshold=0.2, n=5):
     for i in range(n, len(delta_t)):
         medians[i] = np.median(delta_t[i-n:i])
         if (medians[i] - delta_t[i]) > threshold and (delta_t[i] + delta_t[i-1]) < (medians[i] + threshold):
-            peaks = np.delete(peaks, i)
+            try:
+                peaks = np.delete(peaks, i)
+            except IndexError as err:
+                print(f'Warning: the following error occurred while removing peaks - {err}.')
 
     # second, add peaks if needed
     delta_t = np.diff(peaks) / sr
@@ -206,12 +209,10 @@ def get_bvp_features(bvp, sr):
     sp0001, sp0102, sp0203, sp0304, sp_er = get_psd(bvp, sr)
     lf, mf, hf, tachogram_er = get_tachogram_power(ibi, 8)
 
-    features = {
-        'mean': mean, 'hrv': hrv, 'mean_ibi': mean_ibi,
-        'mse1': mse[0], 'mse2': mse[1], 'mse3': mse[2], 'mse4': mse[3], 'mse5': mse[4],
-        'sp0001': sp0001, 'sp0102': sp0102, 'sp0203': sp0203, 'sp0304': sp0304, 'sp_er': sp_er,
-        'lf': lf, 'mf': mf, 'hf': hf, 'tachogram_er': tachogram_er
-    }
+    features = [
+        mean, hrv, mean_ibi, mse[0], mse[1], mse[2], mse[3], mse[4],
+        sp0001, sp0102, sp0203, sp0304, sp_er, lf, mf, hf, tachogram_er
+    ]
 
     return features
 

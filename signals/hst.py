@@ -36,12 +36,7 @@ def get_hst_features(hst, sr):
     mean, std, kurtosis, skew = get_stat_moments(hst)
     power_bands = get_spec_power(hst, sr, np.array([[0, 0.1], [0.1, 0.2]]))
 
-    features = {
-        'mean': mean, 'std': std, 'kurtosis': kurtosis, 'skew': skew,
-        'power_bands': power_bands
-    }
-
-    return features
+    return [mean, std, kurtosis, skew, power_bands[0], power_bands[1]]
 
 
 def acquire_hst(sig, sr):
