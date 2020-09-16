@@ -7,7 +7,7 @@ from TEAP.utils.exceptions import SignalTooShortError
 
 def get_peaks(sig, sr):
     sig -= np.mean(sig)
-    if round(sr / 50) > 0:
+    if round(sr / 50) > 1:
         sig = lowpass_mean_filter(sig, round(sr / 50))
 
     peaks = []
