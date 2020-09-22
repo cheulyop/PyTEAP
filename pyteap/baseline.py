@@ -50,12 +50,8 @@ def prepare_deap(data_dir):
                 curr_y.append(targets)
             
             # stack features for current subject and apply min-max scaling
-            curr_X = np.stack(curr_X)
-            curr_y = np.stack(curr_y)
-            scaled_X = StandardScaler().fit_transform(curr_X)
-
-            X[sbj_no] = scaled_X
-            y[sbj_no] = curr_y
+            X[sbj_no] = StandardScaler().fit_transform(np.stack(curr_X))
+            y[sbj_no] = np.stack(curr_y)
 
     features = np.concatenate(list(X.values()))
     targets = np.concatenate(list(y.values()))
