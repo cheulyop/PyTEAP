@@ -5,11 +5,11 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="PyTEAP-cheulyop",
-    version="0.0.3",
+    name="PyTEAP",
+    version="0.1.0",
     author="Cheul Young Park",
     author_email="cheulyop@gmail.com",
-    description="A Python implementation of TEAP.",
+    description="A Python implementation of Toolbox for Emotion Analysis using Physiological signals (TEAP).",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/cheulyop/PyTEAP",
