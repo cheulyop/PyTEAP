@@ -2,8 +2,8 @@ import math
 import numpy as np
 import scipy.stats as stats
 from scipy.signal import welch, windows
-from TEAP.utils.filters import lowpass_mean_filter
-from TEAP.utils.exceptions import WelchWindowError, SignalTooShortError
+from utils.filters import lowpass_mean_filter
+from utils.exceptions import WelchWindowError, SignalTooShortError
 
 
 def get_stat_moments(sig):

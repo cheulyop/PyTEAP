@@ -1,5 +1,5 @@
 import numpy as np
-from TEAP.utils.filters import lowpass_mean_filter
+from utils.filters import lowpass_mean_filter
 
 
 def find_gsr_peaks(gsr, sr, threshold=100):

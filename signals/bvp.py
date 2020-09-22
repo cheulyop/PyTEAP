@@ -1,8 +1,10 @@
 import math
+import logging
 import numpy as np
+
 from scipy.signal import welch, windows
-from TEAP.utils.filters import smooth, lowpass_mean_filter, lowpass_median_filter
-from TEAP.utils.exceptions import SignalTooShortError
+from utils.filters import smooth, lowpass_mean_filter, lowpass_median_filter
+from utils.exceptions import SignalTooShortError
 
 
 def get_peaks(sig, sr):
@@ -51,7 +53,8 @@ def correct_peaks(peaks, sr, threshold=0.2, n=5):
             try:
                 peaks = np.delete(peaks, i)
             except IndexError as err:
-                print(f'Warning: the following error occurred while removing peaks - {err}.')
+                logging.getLogger('default').warning(f'Following error occurred while removing peaks - {err}.')
+                # print(f'\nWarning: following error occurred while removing peaks - {err}.')
 
     # second, add peaks if needed
     delta_t = np.diff(peaks) / sr
