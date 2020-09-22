@@ -93,7 +93,7 @@ def pred_GaussianNB(X_train, y_train, X_test, y_test):
     return res
 
 
-def get_baseline_kfold(X, y, target_class='valence', seed=1, n_splits=5, shuffle=True):
+def get_baseline_kfold(X, y, seed, target_class='valence', n_splits=5, shuffle=True):
     # get labels corresponding to target class
     if target_class == 'valence':
         y = y[:, 0]
@@ -130,6 +130,7 @@ if __name__ == "__main__":
     # initialize parser
     parser = argparse.ArgumentParser(description='Preprocess DEAP dataset and get baseline classification results.')
     parser.add_argument('--root', '-r', type=str, required=True, help='path to the dataset directory')
+    parser.add_argument('--seed', '-s', type=int, default=0, help='set seed for random number generation')
     args = parser.parse_args()
 
     # initialize default logger
@@ -146,7 +147,7 @@ if __name__ == "__main__":
     logger.info('Processing complete.')
 
     # get classification results
-    results = get_baseline_kfold(features, targets, target_class='valence', seed=0)
+    results = get_baseline_kfold(features, targets, args.seed, target_class='valence')
     
     # print summary of classification results
     print(results.groupby(level='Metric').mean())
