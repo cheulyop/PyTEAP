@@ -13,10 +13,10 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import StratifiedKFold
 from sklearn.metrics import accuracy_score, balanced_accuracy_score, f1_score
 
-from signals.gsr import acquire_gsr, get_gsr_features
-from signals.bvp import acquire_bvp, get_bvp_features
-from signals.hst import acquire_hst, get_hst_features
-from utils.logging import init_logger
+from pyteap.signals.gsr import acquire_gsr, get_gsr_features
+from pyteap.signals.bvp import acquire_bvp, get_bvp_features
+from pyteap.signals.hst import acquire_hst, get_hst_features
+from pyteap.utils.logging import init_logger
 
 
 def prepare_deap(data_dir):

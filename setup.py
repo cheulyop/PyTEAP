@@ -1,11 +1,12 @@
 import setuptools
 
+
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
     name="PyTEAP-cheulyop",
-    version="0.0.1",
+    version="0.0.3",
     author="Cheul Young Park",
     author_email="cheulyop@gmail.com",
     description="A Python implementation of TEAP.",

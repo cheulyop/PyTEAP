@@ -3,8 +3,8 @@ import logging
 import numpy as np
 
 from scipy.signal import welch, windows
-from utils.filters import smooth, lowpass_mean_filter, lowpass_median_filter
-from utils.exceptions import SignalTooShortError
+from pyteap.utils.filters import smooth, lowpass_mean_filter, lowpass_median_filter
+from pyteap.utils.exceptions import SignalTooShortError
 
 
 def get_peaks(sig, sr):
