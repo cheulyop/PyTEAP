@@ -47,14 +47,15 @@ def correct_peaks(peaks, sr, threshold=0.2, n=5):
     delta_t = np.diff(peaks) / sr
     medians = np.zeros(len(delta_t))
 
-    for i in range(n, len(delta_t)):
+    i = n
+    while i < len(delta_t):
         medians[i] = np.median(delta_t[i-n:i])
         if (medians[i] - delta_t[i]) > threshold and (delta_t[i] + delta_t[i-1]) < (medians[i] + threshold):
-            try:
-                peaks = np.delete(peaks, i)
-            except IndexError as err:
-                logging.getLogger('default').warning(f'Following error occurred while removing peaks - {err}.')
-                # print(f'\nWarning: following error occurred while removing peaks - {err}.')
+            peaks = np.delete(peaks, i)
+            delta_t[i-1] += delta_t[i]
+            delta_t = np.delete(delta_t, i)
+        else:
+            i += 1
 
     # second, add peaks if needed
     delta_t = np.diff(peaks) / sr
