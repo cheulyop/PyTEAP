@@ -6,10 +6,10 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="PyTEAP",
-    version="0.1.0",
+    version="0.1.1",
     author="Cheul Young Park",
     author_email="cheulyop@gmail.com",
-    description="A Python implementation of Toolbox for Emotion Analysis using Physiological signals (TEAP).",
+    description="PyTEAP: A Python implementation of Toolbox for Emotion Analysis using Physiological signals (TEAP).",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/cheulyop/PyTEAP",
@@ -20,5 +20,5 @@ setuptools.setup(
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Operating System :: OS Independent",
     ],
-    python_requires='>=3.6',
+    python_requires='>=3.8',
 )
