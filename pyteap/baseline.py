@@ -115,7 +115,7 @@ def get_baseline_kfold(X, y, seed, target_class='valence', n_splits=5, shuffle=T
             'Majority': pred_majority(majority, y_test),
             'Class ratio': pred_random(y_classes, y_test, seed, rng, ratios=class_ratios)
         }
-    
+
     # return results as table
     results = {(fold, classifier): values for (fold, _results) in results.items() for (classifier, values) in _results.items()}
     results_table = pd.DataFrame.from_dict(results, orient='index').stack().unstack(level=1).rename_axis(['Fold', 'Metric'])
@@ -144,6 +144,6 @@ if __name__ == "__main__":
 
     # get classification results
     results = get_baseline_kfold(features, targets, args.seed, target_class='valence')
-    
+
     # print summary of classification results
     print(results.groupby(level='Metric').mean())
