@@ -47,7 +47,8 @@ def correct_peaks(peaks, sr, threshold=0.2, n=5):
     delta_t = np.diff(peaks) / sr
     medians = np.zeros(len(delta_t))
 
-    while (i := n) < len(delta_t):
+    i = n
+    while i < len(delta_t):
         medians[i] = np.median(delta_t[i-n:i])
         if (medians[i] - delta_t[i]) > threshold and (delta_t[i] + delta_t[i-1]) < (medians[i] + threshold):
             peaks = np.delete(peaks, i)
